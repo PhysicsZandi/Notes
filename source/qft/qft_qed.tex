@@ -1,0 +1,35 @@
+\documentclass[a4paper]{article}
+
+\def\ncourse {Quantum Field Theory}
+\def\ntopic {Quantum ElectroDynamics (QED)}
+ 
+\input{../packages}  
+   
+\begin{document}  
+ 
+\maketitle
+
+{\small      
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+    The quantum
+}
+
+\tableofcontents
+\newpage
+
+\section{Section 1}
+\lipsum
+\subsection{Section 1.1}
+\lipsum 
+\lipsum
+\subsection{Section 1.2}
+\lipsum 
+\lipsum
+
+\nocite{qftlecture} 
+\printbibliography
+
+\immediate\write18{mv \jobname.pdf ../../pdf/\jobname.pdf}
+\end{document}
+

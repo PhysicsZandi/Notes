@@ -1,0 +1,32 @@
+\makeatletter
+
+%Title
+\def\nauthor{Matteo Zandi}
+
+\title{\huge \ncourse \\ \Large \ntopic}
+
+\author{\nauthor}
+\date{\today}
+
+%Size
+\usepackage{geometry}
+  \geometry{
+    papersize={379pt, 699pt},
+    textheight=596pt,
+    left=17pt,
+    top=54pt,
+    right=17pt
+  }
+
+%Package
+\usepackage{lipsum}
+\usepackage{xcolor} \xdefinecolor{mycolor}{RGB}{0,175,179} 
+\usepackage{hyperref} \hypersetup{colorlinks, linkcolor={mycolor}, citecolor={mycolor}, urlcolor={mycolor}}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\Large\bfseries\color{mycolor}\centering}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries\color{mycolor}\centering}{\thesubsection}{1em}{}
+
+%Commands
+
+\usepackage[backend=bibtex, sorting=none]{biblatex}
+\addbibresource{../bibliography.bib}
