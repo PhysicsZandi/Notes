@@ -5,13 +5,15 @@
 
 \title{\huge \ncourse \\ \Large \ntopic}
 
-\author{\nauthor}
+\author{\color{mycolor}\nauthor}
 \date{\today}
 
 %Size
 \usepackage{geometry}
-  \geometry{
+%\geometry{a4paper, top = 4cm, bottom = 4cm, left = 3cm, right = 4cm}
+\geometry{
     papersize={379pt, 699pt},
+    textwidth=345pt,
     textheight=596pt,
     left=17pt,
     top=54pt,
@@ -23,10 +25,90 @@
 \usepackage{xcolor} \xdefinecolor{mycolor}{RGB}{0,175,179} 
 \usepackage{hyperref} \hypersetup{colorlinks, linkcolor={mycolor}, citecolor={mycolor}, urlcolor={mycolor}}
 \usepackage{titlesec}
-\titleformat{\section}{\normalfont\Large\bfseries\color{mycolor}\centering}{\thesection}{1em}{}
+\titleformat{\section}{\newpage\normalfont\Large\bfseries\color{mycolor}\centering}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\large\bfseries\color{mycolor}\centering}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries\color{mycolor}\centering}{\thesubsubsection}{1em}{}
 
 %Commands
 
 \usepackage[backend=bibtex, sorting=none]{biblatex}
 \addbibresource{../bibliography.bib}
+
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{yfonts}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{slashed}
+\usepackage{feynmp-auto}
+
+
+\newtheorem{principle}{Principle}[section]
+\newtheorem{lemma}{Lemma}[section]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\renewcommand\qedsymbol{q.e.d.}
+
+\let\oldproof\proof
+\renewcommand{\proof}{\color{darkgray}\oldproof}
+
+\theoremstyle{remark}
+\newtheorem{case}{Case}
+
+\newtheoremstyle{colored}{}{}{\itshape}{}{\color{mycolor}\normalfont\bfseries\indent}{}{\newline}{}
+
+\declaretheorem[
+  style=colored,
+  name=Definition,
+  numberwithin=section,
+]{definition}
+
+\declaretheorem[
+  style=colored,
+  name=Theorem,
+  numberwithin=section,
+]{theorem}
+
+\declaretheorem[
+  style=colored,
+  name=Corollary,
+  numberwithin=section,
+]{corollary}
+
+\declaretheorem[
+  style=colored,
+  name=Law,
+  numberwithin=section,
+]{law}
+
+\declaretheorem[
+  style=colored,
+  name=Principle,
+  numberwithin=section,
+]{princ}
+
+\newcommand{\dv}[2]{\frac{d#1}{d#2}}
+\newcommand{\dvin}[3]{\frac{d#1}{d#2}\Big\vert_{#3}}
+\newcommand{\dvd}[2]{\frac{d^2#1}{d#2^2}}
+\newcommand{\dvf}[2]{\frac{\delta #1}{\delta #2}}
+\newcommand{\pdv}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\pdvd}[3]{\frac{\partial^2 #1}{\partial#2 \partial#3}}
+\newcommand{\pdvdu}[2]{\frac{\partial^2 #1}{\partial#2^2}}
+\newcommand{\integ}[3]{\int_{#1}^{#2}d#3~}
+\newcommand{\poi}[2]{[#1,~#2]}
+\newcommand{\poiexp}[2]{\pdv{#1}{q^i} \pdv{#2}{p_i} - \pdv{#2}{q^i} \pdv{#1}{p_i}}
+
+\newcommand{\comm}[2]{[#1,~#2]}
+\newcommand{\set}[2]{\{#1\colon#2\}}
+\newcommand{\inner}[2]{\langle#1,~#2\rangle}
+\newcommand{\av}[1]{\langle#1\rangle}
+\newcommand{\avp}[2]{\langle#1\rangle_{#2}}
+\newcommand{\ket}[1]{\vert#1\rangle}
+\newcommand{\bra}[1]{\langle#1\vert}
+\newcommand{\braket}[2]{\langle#1\vert#2\rangle}

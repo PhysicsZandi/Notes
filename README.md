@@ -8,7 +8,8 @@ In this repository, you will find LaTeX notes about topics in theoretical physic
 
 ### The Standard Model
 
-1. [Gauge invariance](https://github.com/PhysicsZandi/Notes/blob/main/pdf/tsm_gau.pdf).
+1. [Gauge invariance](https://github.com/PhysicsZandi/Notes/blob/main/pdf/tsm_gau.pdf),
+2. [Spontaneous Symmetry Breaking](https://github.com/PhysicsZandi/Notes/blob/main/pdf/tsm_ssb.pdf).
 
 ### Theoretical Astroparticle Physics
 
