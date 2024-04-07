@@ -4,7 +4,9 @@ In this repository, you will find LaTeX notes about topics in theoretical physic
 
 ### Quantum Field Theory
 
-1. [QED](https://github.com/PhysicsZandi/Notes/blob/main/pdf/qft_qed.pdf).
+1. [Mathematical formalism of the S-matrix](https://github.com/PhysicsZandi/Notes/blob/main/pdf/qft_math.pdf) (work in progress),
+2. [Feynman's rules](https://github.com/PhysicsZandi/Notes/blob/main/pdf/qft_rules.pdf),
+3. [Scattering processes](https://github.com/PhysicsZandi/Notes/blob/main/pdf/qft_scatt.pdf) (work in progress).
 
 ### The Standard Model
 

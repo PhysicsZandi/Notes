@@ -1,0 +1,813 @@
+\documentclass[a4paper]{article} 
+
+\def\ncourse {Quantum Field Theory}
+\def\ntopic {2 - Feynman's rules} 
+ 
+\input{../../packages}  
+   
+\begin{document}  
+ 
+\maketitle
+
+\begin{abstract}
+    In this notes, we will deduce the Feynamn's rule about vertices, internal lines (propagators) and external lines.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Feynman's rules: vertices} 
+
+    Feynman's rules for vertices can be derived from the Lagrangian of the theory.
+
+\subsection{Scalar theory}
+
+    The Lagrangian of a scalar theory is 
+    \begin{align*}
+        \mathcal L & = \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - m^2 \phi^2 - \frac{g}{3!} \phi^3  - \frac{\lambda}{4!} \phi^4 ~.
+    \end{align*}  
+
+    The first interaction vertex  \[ - \frac{g}{3!} \phi^3 \] gives two Feynman's diagram:
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{scal_1} 
+            \begin{fmfgraph*}(100, 100)
+                \fmfleft{i1,i2}
+                \fmfright{o1}
+                \fmf{dashes,label=$\phi_2$}{w1,i1} 
+                \fmf{dashes,label=$\phi_1$}{i2,w1} 
+                \fmf{dashes,label=$\phi_3$}{w1,o1}
+                \fmfv{lab=$= - i g$,lab.dist=0.1w}{o1}
+            \end{fmfgraph*}
+            \hspace*{1cm}
+        \end{fmffile} 
+    \end{figure}
+    \begin{proof}
+        In the vertex, $i \mathcal L_{int}$ becomes
+        \begin{align*}
+            - i \frac{g}{3!} \phi_1 \phi_2 \phi_3 = \phi_3 (- i \frac{g}{3!} ) \phi_1 \phi_2 ~,
+        \end{align*}
+        which means that, since the final states on the left is $\phi_3$, the initial state on the right is $\phi_1 \phi_2$ and we can exchange $1 \leftrightarrow 2 \leftrightarrow 3$, the vertex contribution is $- i g$.
+    \end{proof} 
+
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{scal_2} 
+            \begin{fmfgraph*}(100, 100)
+                \fmfleft{i1}
+                \fmfright{o1,o2}
+                \fmf{dashes,label=$\phi_1$}{w1,i1} 
+                \fmf{dashes,label=$\phi_2$}{o2,w1} 
+                \fmf{dashes,label=$\phi_3$}{w1,o1}
+                \fmfv{lab=$= - i g$,lab.dist=0.5w}{w1}
+            \end{fmfgraph*}
+            \hspace*{1cm}
+        \end{fmffile} 
+    \end{figure}
+    \begin{proof}
+        In the vertex, $i \mathcal L_{int}$ becomes
+        \begin{align*}
+            - i \frac{g}{3!} \phi_1 \phi_2 \phi_3 = \phi_1 \phi_2 (- i \frac{g}{3!} )  \phi_3 ~,
+        \end{align*}
+        which means that, since the final states on the left is $\phi_1 \phi_2$, the initial state on the right is $\phi_3$ and we can exchange $1 \leftrightarrow 2 \leftrightarrow 3$ for a total of $3!$ times, the vertex contribution is $- i g$.
+    \end{proof} 
+
+    The second interaction vertex  \[ - \frac{\lambda}{4!} \phi^4 \] gives one Feynman's diagram:
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{scal_3} 
+            \begin{fmfgraph*}(100, 100) 
+                \fmfleft{i1,i2}
+                \fmfright{o1,o2}
+                \fmf{dashes,label=$\phi_1$}{i1,w1} 
+                \fmf{dashes,label=$\phi_2$}{i2,w1} 
+                \fmf{dashes,label=$\phi_3$}{w1,o1}  
+                \fmf{dashes,label=$\phi_4$}{w1,o2}
+                \fmfv{lab=$= - i g$,lab.dist=0.5w}{w1}
+            \end{fmfgraph*}
+            \hspace*{1cm} 
+        \end{fmffile}   
+    \end{figure}
+    \begin{proof}
+        In the vertex, $i \mathcal L_{int}$ becomes
+        \begin{align*}
+            - i \frac{\lambda}{4!} \phi_1 \phi_2 \phi_3 \phi_4 = \phi_3 \phi_4 (- i \frac{\lambda}{4!} ) \phi_1 \phi_2 ~,
+        \end{align*}
+        which means that, since the final states on the left is $\phi_3 \phi_4$, the initial state on the right is $\phi_1 \phi_2$ and we can exchange $1 \leftrightarrow 2 \leftrightarrow 3 \leftrightarrow 4$ for a total of $4!$ times, the vertex contribution is $- i g$.
+    \end{proof}
+
+\subsection{Scalar QED}
+
+    The Lagrangian of scalar quantum electrodynamics is 
+    \begin{align*}
+        \mathcal L_{sQED} & = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + (D_\mu \phi)^* D^\mu \phi - m^2 \phi^* \phi \\ & = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + (\partial_\mu - i e A_\mu) \phi^* (\partial^\mu + i e A^\mu) \phi - m^2 \phi^* \phi  \\ & = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + \partial_\mu \phi \partial^\mu \phi^* - m^2 \phi^* \phi \\ & \quad - i e A_\mu (\phi^* \partial^\mu \phi - \phi \partial^\mu \phi^*) + e^2 A_\mu A^\mu \phi^* \phi ~.
+    \end{align*}  
+
+    The first interaction vertex  \[ - i e A_\mu (\phi^* \partial^\mu \phi - \phi \partial^\mu \phi^*) \] gives four different Feynman's diagrams:
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{sqed_1} 
+            \begin{fmfgraph*}(100, 100)
+                \fmfleft{i1,i2}
+                \fmfright{o1}
+                \fmf{scalar,label=$\phi_2$}{w1,i1} 
+                \fmf{scalar,label=$\phi_1$}{i2,w1} 
+                \fmf{photon,label=$A^\mu$}{w1,o1}
+                \fmfv{lab=$= -ie (p_1^\mu - p^\mu_2)$,lab.dist=0.1w}{o1}
+            \end{fmfgraph*}
+            \hspace*{1cm}
+        \end{fmffile} 
+    \end{figure}
+    \begin{proof}
+        In the vertex, there is an annihilated scalar $\phi_1$ and an annihilated antiscalar $\phi_2$, so that
+        \begin{equation*}
+            \phi_1 \sim \hat a e^{- i p_1 x} ~, \quad \phi_2^* \sim \hat b e^{- i p_2 x} ~,
+        \end{equation*}
+        hence, $i \mathcal L_{int}$ becomes
+        \begin{align*}
+            e A_\mu (\phi^*_2 \partial^\mu \phi_1 - \phi_1 \partial^\mu \phi^*_2) & = e A_\mu \Big (\phi^*_2 (-i p_1^\mu) \phi_1 - \phi_1 (-i p_2^\mu) \phi^*_2 \Big ) \\ & = A^\mu \Big (-ie ( p_1^\mu - p_2^\mu) \Big ) \phi_1 \phi_2^* ~,
+        \end{align*}
+        which means that, since the final states on the left is $A^\mu$ and the initial state on the right is $\phi_1 \phi_2^*$, the vertex contribution is $-ie (p_1^\mu - p^\mu_2)$.
+    \end{proof}
+
+     
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{sqed_2} 
+            \begin{fmfgraph*}(100, 100) 
+                \fmfleft{i1}
+                \fmfright{o1,o2}
+                \fmf{photon,label=$A^\mu$}{i1,w1}
+                \fmf{scalar,label=$\phi_2$}{w1,o1} 
+                \fmf{scalar,label=$\phi_1$}{o2,w1} 
+                \fmfv{lab=$= -ie (-p_1^\mu + p^\mu_2)$,lab.dist=0.4w}{w1}
+            \end{fmfgraph*}   
+            \hspace*{1cm}
+        \end{fmffile} 
+    \end{figure} 
+    \begin{proof}
+        In the vertex, there is a created scalar $\phi_2$ and a created antiscalar $\phi_1$, so that
+        \begin{equation*}
+            \phi_1 \sim \hat b^\dagger e^{i p_1 x} ~, \quad \phi_2^* \sim \hat a^\dagger e^{i p_2 x} ~,
+        \end{equation*}
+        hence, $i \mathcal L_{int}$ becomes
+        \begin{align*}
+            e A_\mu (\phi^*_2 \partial^\mu \phi_1 - \phi_1 \partial^\mu \phi^*_2) & = e A_\mu \Big (\phi^*_2 (i p_1^\mu) \phi_1 - \phi_1 (i p_2^\mu) \phi^*_2 \Big ) \\ & = A^\mu \Big (-ie ( - p_1^\mu + p_2^\mu) \Big ) \phi_1 \phi_2^* ~,
+        \end{align*}
+        which means that, since the final states on the left is $A^\mu$ and the initial state on the right is $\phi_1 \phi_2^*$, the vertex contribution is $-ie (-p_1^\mu + p^\mu_2)$.
+    \end{proof}
+
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{sqed_3} 
+            \begin{fmfgraph*}(100, 100)
+                \fmfleft{i1}
+                \fmfright{o1,o2}
+                \fmf{scalar,label=$\phi_1$}{i1,w1} 
+                \fmf{scalar,label=$\phi_2$}{w1,o1}  
+                \fmf{photon,label=$A^\mu$}{w1,o2} 
+                \fmfv{lab=$= -ie (p_1^\mu + p^\mu_2)$,lab.dist=0.4w}{w1}
+            \end{fmfgraph*}
+        \end{fmffile} 
+        \hspace*{1cm}
+    \end{figure}
+    \begin{proof}
+        In the vertex, there is an annihilated scalar $\phi_1$ and a created scalar $\phi_2$, so that
+        \begin{equation*}
+            \phi_1 \sim \hat a e^{-i p_1 x} ~, \quad \phi_2^* \sim \hat a^\dagger e^{i p_2 x} ~,
+        \end{equation*}
+        hence, $i \mathcal L_{int}$ becomes
+        \begin{align*}
+            e A_\mu (\phi^*_2 \partial^\mu \phi_1 - \phi_1 \partial^\mu \phi^*_2) & = e A_\mu \Big (\phi^*_2 (-i p_1^\mu) \phi_1 - \phi_1 (i p_2^\mu) \phi^*_2 \Big ) \\ & = A^\mu \Big (-ie ( p_1^\mu + p_2^\mu) \Big ) \phi_1 \phi_2^* ~,
+        \end{align*}
+        which means that, since the final states on the left is $A^\mu$ and the initial state on the right is $\phi_1 \phi_2^*$, the vertex contribution is $-ie (p_1^\mu + p^\mu_2)$.
+    \end{proof}
+
+     
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{sqed_4} 
+            \begin{fmfgraph*}(100, 100) 
+                \fmfleft{i1}
+                \fmfright{o1,o2}
+                \fmf{scalar,label=$\phi_1$}{w1,i1} 
+                \fmf{scalar,label=$\phi_2$}{o1,w1}  
+                \fmf{photon,label=$A^\mu$}{w1,o2} 
+                \fmfv{lab=$= -ie (- p_1^\mu - p^\mu_2)$,lab.dist=0.4w}{w1}
+            \end{fmfgraph*}  
+        \hspace*{1cm}
+        \end{fmffile} 
+    \end{figure} 
+    \begin{proof}
+        In the vertex, there is an annihilated antiscalar $\phi_1$ and a created antiscalar $\phi_2$, so that
+        \begin{equation*}
+            \phi_1 \sim \hat b^\dagger e^{i p_1 x} ~, \quad \phi_2^* \sim \hat b e^{-i p_2 x} ~,
+        \end{equation*}
+        hence, $i \mathcal L_{int}$ becomes
+        \begin{align*}
+            e A_\mu (\phi^*_2 \partial^\mu \phi_1 - \phi_1 \partial^\mu \phi^*_2) & = e A_\mu \Big (\phi^*_2 (i p_1^\mu) \phi_1 - \phi_1 (-i p_2^\mu) \phi^*_2 \Big ) \\ & = A^\mu \Big (-ie ( -p_1^\mu - p_2^\mu) \Big ) \phi_1 \phi_2^* ~,
+        \end{align*}
+        which means that, since the final states on the left is $A^\mu$ and the initial state on the right is $\phi_1 \phi_2^*$, the vertex contribution is $-ie (-p_1^\mu - p^\mu_2)$.
+    \end{proof}
+
+    The second interaction vertex  \[ e^2 g^{\mu\nu} A_\mu A_\nu \phi^* \phi  \] gives one Feynman's diagram
+    \begin{figure}[ht!]
+        \centering 
+        \begin{fmffile}{sqed_5} 
+            \begin{fmfgraph*}(100, 75) 
+                \fmfleft{i1,i2}
+                \fmfright{o1,o2}
+                \fmf{scalar,label=$\phi_1$}{i2,w1} 
+                \fmf{scalar,label=$\phi_2$}{w1,o2} 
+                \fmf{photon,label=$A^\mu$}{i1,w1}
+                \fmf{photon,label=$A^\nu$}{w1,o1}
+                \fmfv{lab=$= 2 i e^2 g^{\mu\nu} $,lab.dist=0.5w}{w1}
+            \end{fmfgraph*}
+            \hspace*{1cm}
+        \end{fmffile} 
+    \end{figure} 
+    \begin{proof}
+        In the vertex, there is an annihilated scalar $\phi_1$ and a created scalar $\phi_2$, so that
+        \begin{equation*}
+            \phi_1 \sim \hat a e^{-i p_1 x} ~, \quad \phi_2^* \sim \hat a^\dagger e^{i p_2 x} ~,
+        \end{equation*}
+        hence, $i \mathcal L_{int}$ becomes
+        \begin{align*}
+            i e^2 g^{\mu\nu} A_\mu A_\nu \phi^*_2 \phi_1 =  A_\nu \phi_2^* (i e^2 g^{\mu\nu}) A_\mu \phi_1 ~,
+        \end{align*}
+        which means that, since the final states on the left is $A_\nu \phi_2^* $, the initial state on the right is $A_\mu \phi_1$ and we can exchange $\mu \leftrightarrow \nu$ for a total of $2!$ times, the vertex contribution is $2 i e^2 g^{\mu\nu}$.
+    \end{proof}
+
+\subsubsection*{Derivative coupling}  
+
+    In order to understand the behaviour of derivative in the interaction Lagrangian, suppose to have a Lagrangian of the form
+    \begin{align*}
+        \mathcal L = \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - \frac{m^2}{2} \phi^2 - \frac{\lambda}{3!} \phi \partial_\mu \phi \partial^\mu \phi ~.
+    \end{align*}  
+
+    The interaction vertex \[ - \frac{\lambda}{3!} \phi \partial_\mu \phi \partial^\mu \phi \] gives two different Feynman's diagram:
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{der_1} 
+            \begin{fmfgraph*}(100, 100)
+                \fmfleft{i1,i2}
+                \fmfright{o1}
+                \fmf{dashes,label=$\phi_2$}{w1,i1} 
+                \fmf{dashes,label=$\phi_1$}{i2,w1} 
+                \fmf{dashes,label=$\phi_3$}{w1,o1}
+                \fmfv{lab=$= - i \lambda p_2^\mu p_3^\mu$,lab.dist=0.1w}{o1}
+            \end{fmfgraph*}
+            \hspace*{1cm}
+        \end{fmffile} 
+    \end{figure}
+    \begin{proof}
+        In the vertex, there are two annihilated scalar $\phi_1$, $\phi_2$ and a created scalar $\phi_2$, so that
+        \begin{equation*}
+            \phi_1 \sim \hat a e^{- i p_1 x} ~, \quad \phi_2 \sim \hat a e^{- i p_2 x} ~, \quad \phi_3 \sim \hat a^\dagger e^{i p_3 x} ~,
+        \end{equation*}
+        hence, $i \mathcal L_{int}$ becomes
+        \begin{align*}
+            - i \frac{\lambda}{3!} \phi_1 \partial_\mu \phi_2 \partial^\mu \phi_3 & = - i \frac{\lambda}{3!} \phi_1 (- i p_2^\mu) \phi_2 (i p_3^\mu) \phi_2 \\ & = \phi_3 ( - i \frac{\lambda}{3!} p_2^\mu p_3^\mu ) \phi_1 \phi_2 ~,
+        \end{align*}
+        which means that, since the final states on the left is $\phi_3$, the initial state on the right is $\phi_1 \phi_2$ and we can exchange $1 \leftrightarrow 2 \leftrightarrow 3$ for a total of $3!$ times, the vertex contribution is $- i \lambda p_2^\mu p_3^\mu$.
+    \end{proof}
+
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{der_2} 
+            \begin{fmfgraph*}(100, 100)
+                \fmfleft{i1}
+                \fmfright{o1,o2}
+                \fmf{dashes,label=$\phi_1$}{i1,w1} 
+                \fmf{dashes,label=$\phi_2$}{o2,w1} 
+                \fmf{dashes,label=$\phi_3$}{w1,o1}
+                \fmfv{lab=$= i \lambda p_2^\mu p_3^\mu$,lab.dist=0.5w}{w1}
+            \end{fmfgraph*}
+            \hspace*{1cm}
+        \end{fmffile} 
+    \end{figure}
+    \begin{proof}
+        In the vertex, there are two created scalar $\phi_2$, $\phi_3$ and an annihilated scalar $\phi_1$, so that
+        \begin{equation*}
+            \phi_1 \sim \hat a e^{- i p_1 x} ~, \quad \phi_2 \sim \hat a^\dagger e^{i p_2 x} ~, \quad \phi_3 \sim \hat a^\dagger e^{i p_3 x} ~,
+        \end{equation*}
+        hence, $i \mathcal L_{int}$ becomes
+        \begin{align*}
+            - i \frac{\lambda}{3!} \phi_1 \partial_\mu \phi_2 \partial^\mu \phi_3 & = - i \frac{\lambda}{3!} \phi_1 (i p_2^\mu) \phi_2 (i p_3^\mu) \phi_2 \\ & = \phi_2 \phi_3 ( i \frac{\lambda}{3!} p_2^\mu p_3^\mu ) \phi_1  ~,
+        \end{align*}
+        which means that, since the final states on the left is $\phi_2 \phi_3$, the initial state on the right is $\phi_1$ and we can exchange $1 \leftrightarrow 2 \leftrightarrow 3$ for a total of $3!$ times, the vertex contribution is $i \lambda p_2^\mu p_3^\mu$.
+    \end{proof}
+
+\subsection{Yukawa theory}
+
+    The Lagrangian of Yukawa theory is 
+    \begin{equation*}
+        \mathcal L_{Y} = \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - \frac{m^2}{2} \phi^2 + \overline \psi (i \slashed \partial - m) \psi - g \overline \psi \phi \psi ~.
+    \end{equation*}
+
+    The interaction vertex  \[ - g \overline \psi \phi \psi \] gives two different Feynman's diagram:
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{yuk_1} 
+            \begin{fmfgraph*}(100, 100)
+                \fmfleft{i1,i2}
+                \fmfright{o1}
+                \fmf{fermion,label=$\psi_2$}{w1,i1} 
+                \fmf{fermion,label=$\psi_1$}{i2,w1} 
+                \fmf{dashes,label=$\phi$}{w1,o1}
+                \fmfv{lab=$= - i g$,lab.dist=0.1w}{o1}
+            \end{fmfgraph*}
+            \hspace*{1cm}
+        \end{fmffile} 
+    \end{figure}
+    \begin{proof}
+        In the vertex, there is an annihilated fermion $ \psi_1$, an annihilated antifermion $\overline \psi_2$ and a created scalar, so that
+        \begin{equation*}
+            \phi \sim \hat a^\dagger e^{i p x} ~, \quad \psi_1 \sim \hat a_s u_s e^{- i p_1 x} ~, \quad \overline \psi_2 \sim \hat b_s \overline v_s e^{- i p_2 x} ~,
+        \end{equation*}
+        hence, $i \mathcal L_{int}$ becomes
+        \begin{equation*}
+            - i g \overline \psi_2 \phi \psi_1 = \phi ( - i g ) \overline \psi_2 \psi_1 ~,
+        \end{equation*}
+        which means that, since the final states on the left is $\phi$ and the initial state on the right is $\overline \psi_2 \psi_1$, the vertex contribution is $-ig$.
+    \end{proof}
+
+    \begin{figure}[ht!]
+        \centering 
+        \begin{fmffile}{yuk_2} 
+            \begin{fmfgraph*}(100, 100)
+                \fmfleft{i1}
+                \fmfright{o1,o2} 
+                \fmf{fermion,label=$\psi_2$}{o1,w1} 
+                \fmf{fermion,label=$\psi_1$}{w1,o2} 
+                \fmf{dashes,label=$\phi$}{i1,w1}
+                \fmfv{lab=$= - i g$,lab.dist=0.4w}{w1} 
+            \end{fmfgraph*}
+            \hspace*{1cm}
+        \end{fmffile} 
+    \end{figure}
+    \begin{proof}
+        In the vertex, there is a created fermion $\psi_1$, a created antifermion $\psi_2$ and an annihilated scalar, so that
+        \begin{equation*}
+            \phi \sim \hat a e^{-i p x} ~, \quad \overline \psi_1 \sim \hat a_s^\dagger \overline u_s e^{i p_1 x} ~, \quad \psi_2 \sim \hat b_s^\dagger \overline v_s e^{i p_2 x} ~,
+        \end{equation*}
+        hence, $i \mathcal L_{int}$ becomes
+        \begin{equation*}
+            - i g \overline \psi_2 \phi \psi_1 = \overline \psi_2 \psi_1 ( - i g )  \phi ~,
+        \end{equation*}
+        which means that, since the final states on the left is $\overline \psi_2 \psi_1$ and the initial state on the right is $\phi$, the vertex contribution is $-ig$.
+    \end{proof}
+     
+\subsection{QED}
+
+    The Lagrangian of quantum electrodynamics is 
+    \begin{align*}
+        \mathcal L_{QED} & = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + \overline \psi (i \slashed D - m) \psi = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + \overline \psi (i \gamma^\mu (\partial_\mu + i e A_\mu) - m) \psi  \\ & = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + \overline \psi (i \slashed \partial - m) \psi - e \overline \psi \gamma^\mu \psi A_\mu ~.
+    \end{align*}  
+
+    The interaction vertex  \[ - e \overline \psi \gamma^\mu \psi A_\mu \] gives four different Feynman's diagrams:
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{qed_1} 
+            \begin{fmfgraph*}(100, 100)
+                \fmfleft{i1,i2}
+                \fmfright{o1}
+                \fmf{fermion,label=$\psi_2$}{w1,i1} 
+                \fmf{fermion,label=$\psi_1$}{i2,w1} 
+                \fmf{photon,label=$A^\mu$}{w1,o1}
+                \fmfv{lab=$= - i e \gamma^\mu$,lab.dist=0.1w}{o1}
+            \end{fmfgraph*}
+            \hspace*{1cm}
+        \end{fmffile} 
+    \end{figure}
+    \begin{proof}
+        In the vertex, there is an annihilated fermion $\psi_1$ and an annihilated antifermion $\psi_2$, so that
+        \begin{equation*}
+            \psi_1 \sim \hat a_s u_s e^{- i p_1 x} ~, \quad \overline \psi_2 \sim \hat b_s \overline v_s e^{- i p_2 x} ~,
+        \end{equation*}
+        hence, $i \mathcal L_{int}$ becomes
+        \begin{equation*}
+            - i e \overline \psi_2 \gamma^\mu \psi_1 A_\mu = A_\mu (-i e \gamma^\mu) \overline \psi_2 \psi_1 ~,
+        \end{equation*}
+        which means that, since the final states on the left is $A^\mu$ and the initial state on the right is $\overline \psi_2 \psi_1 $, the vertex contribution is $- i e \gamma^\mu$.
+    \end{proof}
+
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{qed_2} 
+            \begin{fmfgraph*}(100, 100) 
+                \fmfleft{i1}
+                \fmfright{o1,o2}
+                \fmf{photon,label=$A^\mu$}{i1,w1}
+                \fmf{fermion,label=$\psi_2$}{w1,o1} 
+                \fmf{fermion,label=$\psi_1$}{o2,w1} 
+                \fmfv{lab=$= -ie \gamma^\mu$,lab.dist=0.4w}{w1}
+            \end{fmfgraph*}   
+            \hspace*{1cm}
+        \end{fmffile} 
+    \end{figure} 
+    \begin{proof}
+        In the vertex, there is a created fermion $\psi_2$ and a created antifermion $\psi_1$, so that
+        \begin{equation*}
+            \psi_1 \sim \hat b^\dagger_s v_s e^{i p_1 x} ~, \quad \overline \psi_2 \sim \hat a^\dagger_s \overline u_s e^{i p_2 x} ~,
+        \end{equation*}
+        hence, $i \mathcal L_{int}$ becomes
+        \begin{equation*}
+            - i e \overline \psi_2 \gamma^\mu \psi_1 A_\mu =  \overline \psi_2 \psi_1 (-i e \gamma^\mu) A_\mu ~,
+        \end{equation*}
+        which means that, since the final states on the left is $\overline \psi_2 \psi_1 $ and the initial state on the right is $A^\mu$, the vertex contribution is $-ie \gamma^\mu$.
+    \end{proof}
+
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{qed_3} 
+            \begin{fmfgraph*}(100, 100)
+                \fmfleft{i1}
+                \fmfright{o1,o2}
+                \fmf{fermion,label=$\psi_1$}{i1,w1} 
+                \fmf{fermion,label=$\psi_2$}{w1,o1}  
+                \fmf{photon,label=$A^\mu$}{w1,o2} 
+                \fmfv{lab=$= - i e \gamma^\mu$,lab.dist=0.4w}{w1}
+            \end{fmfgraph*}
+        \end{fmffile} 
+        \hspace*{1cm}
+    \end{figure}
+    \begin{proof}
+        In the vertex, there is an annihilated fermion $\psi_1$ and a created fermion $\psi_2$, so that
+        \begin{equation*}
+            \psi_1 \sim \hat a_s u_s e^{- i p_1 x} ~, \quad \overline \psi_2 \sim \hat a^\dagger_s \overline u_s e^{i p_2 x} ~,
+        \end{equation*}
+        hence, $i \mathcal L_{int}$ becomes
+        \begin{align*}
+            - i e \overline \psi_2 \gamma^\mu \psi_1 A_\mu = A_\mu \overline \psi_2 (-i e \gamma^\mu) \psi_1  ~,
+        \end{align*}
+        which means that, since the final states on the left is $A^\mu \overline \psi_2$ and the initial state on the right is $\psi_1$, the vertex contribution is $-ie \gamma^\mu$.
+    \end{proof}
+
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{qed_4} 
+            \begin{fmfgraph*}(100, 100) 
+                \fmfleft{i1}
+                \fmfright{o1,o2}
+                \fmf{fermion,label=$\psi_1$}{w1,i1} 
+                \fmf{fermion,label=$\psi_2$}{o1,w1}  
+                \fmf{photon,label=$A^\mu$}{w1,o2} 
+                \fmfv{lab=$=- i e \gamma^\mu$,lab.dist=0.4w}{w1}
+            \end{fmfgraph*}  
+        \hspace*{1cm}
+        \end{fmffile} 
+    \end{figure} 
+    \begin{proof}
+        In the vertex, there is an annihilated antifermion $\psi_1$ and a created antifermion $\psi_2$, so that
+        \begin{equation*}
+            \psi_1 \sim \hat b^\dagger_s v_s e^{i p_1 x} ~, \quad \overline \psi_2 \sim \hat b_s \overline v_s e^{-i p_2 x} ~,
+        \end{equation*}
+        hence, $i \mathcal L_{int}$ becomes
+        \begin{align*}
+            - i e \overline \psi_2 \gamma^\mu \psi_1 A_\mu = A_\mu \overline \psi_2 (-i e \gamma^\mu) \psi_1  ~,
+        \end{align*}
+        which means that, since the final states on the left is $A^\mu \overline \psi_2$ and the initial state on the right is $\psi_1$, the vertex contribution is $-ie \gamma^\mu$.
+    \end{proof}
+
+\section{Feynman's rules: internal lines}
+
+    Feynman's rules for internal lines can be derived by computing the propagator.
+
+\subsection{Scalar propagator}
+
+    The scalar propagator is given by 
+    \begin{equation*}
+        D_F (x, y) = i \int \frac{d^4 p}{(2\pi)^4} \frac{e^{i p (x - y)}}{p^2 - m^2 + i \epsilon} ~.
+    \end{equation*}
+
+    \begin{proof}
+        Recall that a real scalar field is expanded in creation and annihilation operators by
+        \begin{equation*}
+            \hat \phi(x) = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \Big ( \hat a_p e^{- i p x} + \hat a^\dagger_p e^{i p x} \Big) ~.
+        \end{equation*}
+        By definition, we need to compute
+        \begin{equation*}
+            \bra{0} T \{ \phi(x) \phi(y) \} \ket{0} = \bra{0} \phi(x) \phi(y) \ket{0} \theta(x_0 - y_0) + \bra{0} \phi(y) \phi(x) \ket{0} \theta(y_0 - x_0) ~.
+        \end{equation*}
+        First, we compute this quantity without the time-ordering operator
+        \begin{align*}
+            & \bra{0} \phi(x) \phi(y) \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} 
+            \bra{0} \Big ( \hat a_p e^{- i p x} + \hat a^\dagger_p e^{i p x} \Big) \Big ( \hat a_q e^{- i q y} + \hat a^\dagger_q e^{i q y} \Big) \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \bra{0} \hat a_p \hat a^\dagger_q  \ket{0} e^{i (qy - px)} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \bra{0} (2\pi)^3 \delta^3 (\mathbf p - \mathbf q)\ket{0} e^{i (qy - px)} \\ & =  \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{- i p (x - y)} ~,
+        \end{align*}
+        then, we have
+        \begin{align*}
+            & \bra{0} T \{ \phi(x) \phi(y) \} \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{- i p (x - y)} \theta(x_0 - y_0) + \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i p (x - y)} \theta(y_0 - x_0) \\ & = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i \mathbf p \cdot ( \mathbf x -  \mathbf y)} e^{- i E_p (x_0 - y_0)} \theta(x_0 - y_0) \\ & \quad + \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{- i \mathbf p \cdot ( \mathbf x - \mathbf y)} e^{i E_p (x_0 - y_0) } \theta(y_0 - x_0) \\ & = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{-i \mathbf p \cdot ( \mathbf x - \mathbf y)} \\ & \quad \times \Big ( e^{-i E_p (x_0 - y_0) } \theta(x_0 - y_0) + e^{i E_p (x_0 - y_0) } \theta(- (x_0 - y_0)) \Big ) ~,
+        \end{align*}
+        where we have made a change $\mathbf p \leftrightarrow - \mathbf p$. Now, we use the identity in \eqref{feyn}
+        \begin{equation*}
+            e^{-i E_p (x_0 - y_0) } \theta(x_0 - y_0) + e^{i E_p (x_0 - y_0) } \theta(- (x_0 - y_0)) = - \frac{2 E_p}{2 \pi i} \int d p_0 \frac{e^{i p_0 (x_0 - y_0)}}{p_0^2 - E_p^2 + i \epsilon} ~,
+        \end{equation*}
+        to obtain
+        \begin{align*}
+            \bra{0} T \{ \phi(x) \phi(y) \} \ket{0} & = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{-i \mathbf p \cdot ( \mathbf x - \mathbf y)} \Big ( - \frac{2 E_p}{2 \pi i} \int d p_0\frac{e^{i p_0(x_0 - y_0)}}{p_0^2 - E_p^2 + i \epsilon}  \Big ) \\ & = i \int \frac{d^4 p}{(2\pi)^4} \frac{e^{i p_0(x_0 - y_0)} e^{-i \mathbf p \cdot ( \mathbf x - \mathbf y)} }{p_0^2 - |\mathbf p|^2 - m^2 + i \epsilon} = i \int \frac{d^4 p}{(2\pi)^4} \frac{e^{i p (x - y)}}{p^2 - m^2 + i \epsilon} ~,
+        \end{align*}
+        where we have used $E_p = \sqrt{|\mathbf p|^2 + m^2|} \neq p_0$ since it is only a integration variable.
+
+        This propagator is valid for a complex field as well. Recall that a complex scalar fields are expanded in creation and annihilation operators by
+        \begin{equation*}
+            \hat \phi(x) = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \Big ( \hat a_p e^{- i p x} + \hat b^\dagger_p e^{i p x} \Big) ~,
+        \end{equation*}
+        \begin{equation*}
+            \hat \phi^\dagger (x) = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \Big ( \hat b_p e^{- i p x} + \hat a^\dagger_p e^{i p x} \Big) ~.
+        \end{equation*}
+        By definition, we need to compute
+        \begin{equation*}
+            \bra{0} T \{ \phi(x) \phi^\dagger(y) \} \ket{0} = \bra{0} \phi(x) \phi^\dagger(y) \ket{0} \theta(x_0 - y_0) + \bra{0} \phi^\dagger (y) \phi(x) \ket{0} \theta(y_0 - x_0) ~.
+        \end{equation*}
+        First, we compute these quantities without the time-ordering operator
+        \begin{align*}
+            & \bra{0} \phi(x) \phi^\dagger(y) \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} 
+            \bra{0} \Big ( \hat a_p e^{- i p x} + \hat b^\dagger_p e^{i p x} \Big) \Big ( \hat b_q e^{- i q y} + \hat a^\dagger_q e^{i q y} \Big) \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \bra{0} \hat a_p \hat a^\dagger_q  \ket{0} e^{i (qy - px)} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \bra{0} (2\pi)^3 \delta^3 (\mathbf p - \mathbf q)\ket{0} e^{i (qy - px)} \\ & =  \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i p (y - x)} ~,
+        \end{align*}
+        \begin{align*}
+            & \bra{0} \phi^\dagger(y) \phi(x) \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} 
+            \bra{0}  \Big ( \hat b_q e^{- i q y} + \hat a^\dagger_q e^{i q y} \Big) \Big ( \hat a_p e^{- i p x} + \hat b^\dagger_p e^{i p x} \Big) \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \bra{0} \hat b_p \hat b^\dagger_q  \ket{0} e^{- i (qy - px)} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \bra{0} (2\pi)^3 \delta^3 (\mathbf p - \mathbf q)\ket{0} e^{- i (qy - px)} \\ & =  \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i p (x - y)} ~,
+        \end{align*}
+        but we observe that they are exactly the same as the real case, so the following computations would be identical.
+    \end{proof}
+
+\subsection{Fermion propagator}
+
+    The fermion propagator is given by 
+    \begin{equation*}
+        D_F (x, y) = i \int \frac{d^4 p}{(2\pi)^4} \frac{e^{i p (x - y)}}{p^2 - m^2 + i \epsilon} (\slashed p + m)~.
+    \end{equation*}
+
+    \begin{proof}
+        Recall that fermion fields are expanded in creation and annihilation operators by
+        \begin{equation*}
+            \hat \psi(x) = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}}  \Big (\hat a_p^s u_p^s e^{- i p x} + \hat b^{s\dagger}_p v_p^s e^{i p x} \Big) ~,
+        \end{equation*}
+        \begin{equation*}
+            \hat{ \overline \psi} (x) = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}}  \Big (\hat b_p^s \overline v_p^s e^{- i p x} + \hat a^{s\dagger}_p \overline u_p^s e^{i p x} \Big) ~,
+        \end{equation*}
+        By definition, we need to compute
+        \begin{equation*}
+            \bra{0} T \{ \psi(x) \overline \psi(y) \} \ket{0} = \bra{0} \psi(x) \overline \psi(y) \ket{0} \theta(x_0 - y_0) - \bra{0} \overline \psi(y) \psi(x) \ket{0} \theta(y_0 - x_0) ~.
+        \end{equation*}
+        First, we compute this quantity without the time-ordering operator
+        \begin{align*}
+            & \bra{0} \psi(x) \overline \psi(y) \ket{0} \\ & = \sum_{s, r} \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \\ & \quad \times \bra{0} \Big ( \hat a_p^s u^s_p e^{- i p x} + \hat b^{s \dagger}_p v^s_p e^{i p x} \Big) \Big ( \hat b_q^r \overline v^r_q e^{- i q y} + \hat a^{r \dagger}_q \overline u_q^r e^{i q y} \Big) \ket{0} 
+            \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \sum_{s, r} u^s_p \overline u^r_q \bra{0} \hat a^s_p \hat a^{r\dagger}_q  \ket{0} e^{i (qy - px)} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \sum_{s, r} u^s_p \overline u^r_q \delta_{rs} \bra{0} (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) \ket{0} e^{i (qy - px)} \\ & =  \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i p (y - x)} \sum_s u^s_p \overline u^s_p = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i p (y - x)} (\slashed p + m) ~,
+        \end{align*}
+        \begin{align*}
+            & \bra{0} \overline \psi(y) \psi(x) \ket{0} \\ & = \sum_{s, r} \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \\ & \quad \times \bra{0} \Big ( \hat b_q^r \overline v^r_q e^{- i q y} + \hat a^{r \dagger}_q \overline u_q^r e^{i q y} \Big) \Big ( \hat a_p^s u^s_p e^{- i p x} + \hat b^{s \dagger}_p v^s_p e^{i p x} \Big) \ket{0} 
+            \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \sum_{s, r} v^s_p \overline v^r_q \bra{0} \hat b^s_p \hat b^{r\dagger}_q  \ket{0} e^{-i (qy - px)} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \sum_{s, r} v^s_p \overline v^r_q \delta_{rs} \bra{0} (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) \ket{0} e^{-i (qy - px)} \\ & =  \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i p (y - x)} \sum_s v^s_p \overline v^s_p = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{-i p (y - x)} (\slashed p - m) ~,
+        \end{align*}
+        then, we have
+        \begin{align*}
+            & \bra{0} T \{ \psi(x) \overline \psi(y) \} \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{- i p (x - y)} (\slashed p + m) \theta(x_0 - y_0) \\ & \quad - \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i p (x - y)} (\slashed p - m) \theta(y_0 - x_0) \\ & = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i \mathbf p \cdot ( \mathbf x - \mathbf y)} e^{- i E_p (x_0 - y_0)} (\slashed p + m ) \theta(x_0 - y_0) \\ & \quad - \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{- i \mathbf p \cdot ( \mathbf x - \mathbf y)} e^{i E_p (x_0 - y_0) } (\slashed p - m) \theta(y_0 - x_0) \\ & = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i \mathbf p \cdot ( \mathbf x - \mathbf y)} e^{- i E_p (x_0 - y_0)} (\slashed p + m ) \theta(x_0 - y_0) \\ & \quad - \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i \mathbf p \cdot ( \mathbf x - \mathbf y)} e^{i E_p (x_0 - y_0) } (- \slashed p - m) \theta(y_0 - x_0) \\ & = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i \mathbf p \cdot ( \mathbf x - \mathbf y)} (\slashed p + m) \\ & \quad \times \Big ( e^{-i E_p (x_0 - y_0) } \theta(x_0 - y_0) + e^{i E_p (x_0 - y_0) } \theta(- (x_0 - y_0)) \Big ) ~,
+        \end{align*}
+        where we have made a change $\mathbf p \leftrightarrow - \mathbf p$. Now, we use the identity in \eqref{feyn}
+        \begin{equation*}
+            e^{-i E_p (x_0 - y_0) } \theta(x_0 - y_0) + e^{i E_p (x_0 - y_0) } \theta(- (x_0 - y_0)) = \frac{2 E_p}{2 \pi i} \int d p_0 \frac{e^{- i p_0 (x_0 - y_0)}}{p_0^2 - E_p^2 + i \epsilon} ~,
+        \end{equation*}
+        to obtain
+        \begin{align*}
+            & \bra{0} T \{ \psi(x) \overline \psi(y) \} \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i \mathbf p \cdot ( \mathbf x - \mathbf y)} (\slashed p + m) \Big (\frac{2 E_p}{2 \pi i} \int d p_0\frac{e^{- i p_0(x_0 - y_0)}}{p_0^2 - E_p^2 + i \epsilon}  \Big ) \\ & = i \int \frac{d^4 p}{(2\pi)^4} \frac{e^{-i p_0(x_0 - y_0)} e^{i \mathbf p \cdot ( \mathbf x - \mathbf y)} }{p_0^2 - |\mathbf p|^2 - m^2 + i \epsilon} (\slashed p + m) \\ & = - i \int \frac{d^4 p}{(2\pi)^4} \frac{e^{- i p (x - y)}}{p^2 - m^2 + i \epsilon} (\slashed p + m) ~,
+        \end{align*}
+        where we have used $E_p = \sqrt{|\mathbf p|^2 + m^2|} \neq p_0$ since it is only a integration variable.
+    \end{proof}
+
+\subsection{Photon propagator}
+
+    The photon propagator is given by 
+    \begin{equation*}
+        D_F (x, y) = i \int \frac{d^4 p}{(2\pi)^4} \frac{e^{- i p (x - y)}}{p^2 - m^2 + i \epsilon} \Big ( - \eta^{\mu\nu} + (1 - \xi) \frac{p_\mu p_\nu}{p^2} \Big) ~.
+    \end{equation*}
+
+    \begin{proof}
+        Recall that photon fields are expanded in creation and annihilation operators by
+        \begin{equation*}
+            \hat A^\mu (x) = \sum_\lambda \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}}  \Big (\hat a_p^\lambda \epsilon_\lambda^\mu (\mathbf p) e^{- i p x} + \hat a^{\lambda \dagger}_p \epsilon_\lambda^{*\mu} (\mathbf p) e^{i p x} \Big) ~,
+        \end{equation*}
+        By definition, we need to compute
+        \begin{equation*}
+            \bra{0} T \{ A^\mu (x) A^\nu (y) \} \ket{0} = \bra{0} A^\mu (x) A^\nu (y) \theta(x_0 - y_0) + \bra{0}  A^\nu (y) A^\mu (x) \ket{0} \theta(y_0 - x_0) ~.
+        \end{equation*}
+        First, we compute this quantity without the time-ordering operator
+        \begin{align*}
+            & \bra{0} A^\mu (x) A^\nu (y) \ket{0} \\ & = \sum_{\lambda, \sigma} \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \\ & \quad \times \bra{0} \Big ( \hat a_p^\lambda \epsilon_\lambda^\mu (\mathbf p) e^{- i p x} + \hat a^{\lambda \dagger}_p \epsilon_\lambda^{*\mu} (\mathbf p) e^{i p x} \Big) \Big ( \hat a_q^\sigma \epsilon_\sigma^\nu (\mathbf q) e^{- i q y} + \hat a^{\sigma \dagger}_q \epsilon_\lambda^{*\mu} (\mathbf q) e^{i qy}\Big) \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \sum_{\lambda, \sigma}  \epsilon_\lambda^{\mu} (\mathbf p) \epsilon_\sigma^{*\nu} (\mathbf q) \bra{0} \hat a^\lambda_p \hat a^{\sigma \dagger}_q  \ket{0} e^{i (qy - px)} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \int \frac{d^3 q}{(2\pi)^3 \sqrt{2 E_q}} \sum_{\lambda, \sigma} \epsilon_{p \lambda}^{\mu} \epsilon_{q \sigma}^{*\nu} \delta_{\lambda \sigma} \bra{0} (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) \ket{0} e^{i (qy - px)} \\ & =  \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{- i p (x - y)} \sum_{\lambda} \epsilon_{p \lambda}^{\mu} \epsilon_{p \lambda}^{*\nu} \\ & = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{- i p (x - y)} \Big ( - \eta^{\mu\nu} + (1 - \xi) \frac{p_\mu p_\nu}{p^2} \Big) ~,
+        \end{align*}
+        then, we have
+        \begin{align*}
+            & \bra{0} T \{ A^\mu (x) A^\nu (y) \} \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{- i p (x - y)} \Big ( - \eta^{\mu\nu} + (1 - \xi) \frac{p_\mu p_\nu}{p^2} \Big) \theta(x_0 - y_0) \\ & \quad + \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i p (x - y)} \Big ( - \eta^{\mu\nu} + (1 - \xi) \frac{p_\mu p_\nu}{p^2} \Big) \theta(y_0 - x_0) \\ & = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i \mathbf p \cdot ( \mathbf x - \mathbf y)} e^{- i E_p (x_0 - y_0)} \Big ( - \eta^{\mu\nu} + (1 - \xi) \frac{p_\mu p_\nu}{p^2} \Big) \theta(x_0 - y_0) \\ & \quad + \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{- i \mathbf p \cdot ( \mathbf x - \mathbf y)} e^{i E_p (x_0 - y_0) } \Big ( - \eta^{\mu\nu} + (1 - \xi) \frac{p_\mu p_\nu}{p^2} \Big) \theta(y_0 - x_0) \\ & = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i \mathbf p \cdot ( \mathbf x - \mathbf y)} \Big ( - \eta^{\mu\nu} + (1 - \xi) \frac{p_\mu p_\nu}{p^2} \Big) \\ & \quad \times \Big ( e^{-i E_p (x_0 - y_0) } \theta(x_0 - y_0) + e^{i E_p (x_0 - y_0) } \theta(- (x_0 - y_0)) \Big ) ~,
+        \end{align*}
+        where we have made a change $\mathbf p \leftrightarrow - \mathbf p$. Now, we use the identity in \eqref{feyn}
+        \begin{equation*}
+            e^{-i E_p (x_0 - y_0) } \theta(x_0 - y_0) + e^{i E_p (x_0 - y_0) } \theta(- (x_0 - y_0)) = \frac{2 E_p}{2 \pi i} \int d p_0 \frac{e^{- i p_0 (x_0 - y_0)}}{p_0^2 - E_p^2 + i \epsilon} ~,
+        \end{equation*}
+        to obtain
+        \begin{align*}
+            & \bra{0} T \{ A^\mu (x) A^\nu (y) \} \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 2 E_p} e^{i \mathbf p \cdot ( \mathbf x - \mathbf y)} \Big ( - \eta^{\mu\nu} + (1 - \xi) \frac{p_\mu p_\nu}{p^2} \Big) \\ & \quad \times \Big (\frac{2 E_p}{2 \pi i} \int d p_0\frac{e^{- i p_0(x_0 - y_0)}}{p_0^2 - E_p^2 + i \epsilon}  \Big ) \\ & = i \int \frac{d^4 p}{(2\pi)^4} \frac{e^{-i p_0(x_0 - y_0)} e^{i \mathbf p \cdot ( \mathbf x - \mathbf y)} }{p_0^2 - |\mathbf p|^2 - m^2 + i \epsilon} \Big ( - \eta^{\mu\nu} + (1 - \xi) \frac{p_\mu p_\nu}{p^2} \Big) \\ & = i \int \frac{d^4 p}{(2\pi)^4} \frac{e^{- i p (x - y)}}{p^2 - m^2 + i \epsilon} \Big ( - \eta^{\mu\nu} + (1 - \xi) \frac{p_\mu p_\nu}{p^2} \Big) ~,
+        \end{align*}
+        where we have used $E_p = \sqrt{|\mathbf p|^2 + m^2|} \neq p_0$ since it is only a integration variable.
+    \end{proof}
+
+\section{Feynman's rules: external lines}
+
+    Feynman's rules for external lines can be derived by the expansions of the fields.
+
+\subsection{Scalar external line}
+
+    External scalar lines gets a factor of $1$.
+
+    \begin{proof}
+        Recall that complex scalar fields are expanded in creation and annihilation operators by
+        \begin{equation*}
+            \hat \phi(x) = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \Big ( \hat a_p e^{- i p x} + \hat b^\dagger_p e^{i p x} \Big) ~,
+        \end{equation*}
+        \begin{equation*}
+            \hat \phi^\dagger (x) = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \Big ( \hat b_p e^{- i p x} + \hat a^\dagger_p e^{i p x} \Big) ~.
+        \end{equation*}
+        For an initial scalar, we have
+        \begin{align*}
+            & \bra{0} \hat \phi (x) \ket{q} = \bra{0} \hat \phi (x) \sqrt{2 E_q} \hat a^\dagger_q \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \Big ( \hat a_p e^{- i p x} + \hat b^\dagger_p e^{i p x} \Big) \sqrt{2 E_q} \hat a^\dagger_{qr} \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \bra{0} \hat a_{p} \hat a^\dagger_{q} \ket{0} \sqrt{2 E_q} e^{- i p x} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \bra{0} (2 \pi)^3 \delta^3 (\mathbf p - \mathbf q) \ket{0} \sqrt{2 E_q} e^{- i p x} \\ & = e^{- i p x} ~.
+        \end{align*}
+        For an final scalar, we have
+        \begin{align*}
+            & \bra{q} \hat \phi^\dagger (x) \ket{0} = \bra{0} \hat a_{q} \sqrt{2 E_q} \hat \phi^\dagger \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} \hat a_{q} \Big (\hat b_p e^{- i p x} + \hat a^{\dagger}_p e^{i p x} \Big)  \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} \hat a_{q} \hat a^\dagger_{p} \ket{0} e^{i p x} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} (2 \pi)^3 \delta^3 (\mathbf p - \mathbf q) \ket{0} e^{i p x} \\ & = e^{i p x} ~.
+        \end{align*}
+        For an initial antiscalar, we have
+        \begin{align*}
+            & \bra{0} \hat \phi^\dagger (x) \ket{q} = \bra{0} \hat \psi (x) \sqrt{2 E_q} \hat b^\dagger_{q} \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \bra{0} \Big (\hat b_p e^{- i p x} + \hat a^{\dagger}_p e^{i p x} \Big) \sqrt{2 E_q} \hat b^\dagger_{q} \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \bra{0} \hat b_{p} \hat b^\dagger_{q} \ket{0} \sqrt{2 E_q} e^{- i p x} \\ & = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \bra{0} (2 \pi)^3 \delta^3 (\mathbf p - \mathbf q) \ket{0} \sqrt{2 E_q} e^{- i p x} \\ & = e^{- i p x} ~.
+        \end{align*}
+        For an final antiscalar, we have
+        \begin{align*}
+            & \bra{q, r} \hat \phi (x) \ket{0} = \bra{0} \hat b_{qr} \sqrt{2 E_q} \hat \phi (x) \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} \hat b_{q} \Big (\hat a_p e^{- i p x} + \hat b^{\dagger}_p e^{i p x} \Big) \ket{0} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} \hat b_{q} \hat b_{p}^\dagger \ket{0} e^{i p x} \\ & = \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} (2 \pi)^3 \delta^3 (\mathbf p - \mathbf q) \ket{0} e^{i p x} \\ & = e^{i p x} ~.
+        \end{align*}
+        The polarisation factors need to to added in the LSZ formula.
+    \end{proof}
+
+\subsection{Fermion external line}
+
+    External fermion lines gets a factor of $u$ for an incoming fermion, $\overline u$ for an outgoing fermion, $\overline v$ for an incoming antifermion and $v$ for an outgoing antifermion.
+
+    \begin{proof}
+        Recall that fermion fields are expanded in creation and annihilation operators by
+        \begin{equation*}
+            \hat \psi(x) = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}}  \Big (\hat a_p^s u_p^s e^{- i p x} + \hat b^{s\dagger}_p v_p^s e^{i p x} \Big) ~,
+        \end{equation*}
+        \begin{equation*}
+            \hat{ \overline \psi} (x) = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \Big (\hat b_p^s \overline v_p^s e^{- i p x} + \hat a^{s\dagger}_p \overline u_p^s e^{i p x} \Big) ~,
+        \end{equation*}
+        For an initial fermion, we have
+        \begin{align*}
+            & \bra{0} \hat \psi (x) \ket{q, r} = \bra{0} \hat \psi (x) \sqrt{2 E_q} \hat a^\dagger_{qr} \ket{0} \\ & = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \bra{0} \Big (\hat a_{ps} u_{ps} e^{- i p x} + \hat b_{ps}^\dagger v_{ps} e^{i p x} \Big) \sqrt{2 E_q} \hat a^\dagger_{qr} \ket{0} \\ & = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \bra{0} \hat a_{ps}  \hat a^\dagger_{qr} \ket{0} u_{ps} \sqrt{2 E_q} e^{- i p x} \\ & = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \bra{0} (2 \pi)^3 \delta^3 (\mathbf p - \mathbf q) \delta_{rs} \ket{0} u_{ps} \sqrt{2 E_q} e^{- i p x} \\ & = u_{qr} e^{- i p x} ~.
+        \end{align*}
+        For an final fermion, we have
+        \begin{align*}
+            & \bra{q, r} \hat {\overline \psi} (x) \ket{0} = \bra{0} \hat a_{qr} \sqrt{2 E_q} \hat \psi (x) \ket{0} \\ & = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} \hat a_{qr} \Big (\hat b_p^s \overline v_p^s e^{- i p x} + \hat a^{s\dagger}_p \overline u_p^s e^{i p x} \Big)  \ket{0} \\ & = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} \hat a_{qr} \hat a^\dagger_{ps} \ket{0} \overline u_{ps} e^{i p x} \\ & = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} (2 \pi)^3 \delta^3 (\mathbf p - \mathbf q) \delta_{rs} \ket{0} \overline u_{ps} e^{i p x} \\ & = \overline u_{qr} e^{i p x} ~.
+        \end{align*}
+        For an initial antifermion, we have
+        \begin{align*}
+            & \bra{0} \hat{\overline \psi} (x) \ket{q, r} = \bra{0} \hat \psi (x) \sqrt{2 E_q} \hat b^\dagger_{qr} \ket{0} \\ & = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \bra{0} \Big (\hat b_p^s \overline v_p^s e^{- i p x} + \hat a^{s\dagger}_p \overline u_p^s e^{i p x} \Big) \sqrt{2 E_q} \hat b^\dagger_{qr} \ket{0} \\ & = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \bra{0} \hat b_{ps} \hat b^\dagger_{qr} \ket{0} \overline v_{ps} \sqrt{2 E_q} e^{- i p x} \\ & = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \bra{0} (2 \pi)^3 \delta^3 (\mathbf p - \mathbf q) \delta_{rs} \ket{0} \overline v_{ps} \sqrt{2 E_q} e^{- i p x} \\ & = \overline v_{qr} e^{- i p x} ~.
+        \end{align*}
+        For an final antifermion, we have
+        \begin{align*}
+            & \bra{q, r} \hat \psi (x) \ket{0} = \bra{0} \hat b_{qr} \sqrt{2 E_q} \hat \psi (x) \ket{0} \\ & = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} \hat b_{qr} \Big (\hat a_p^s u_p^s e^{- i p x} + \hat b^{s\dagger}_p v_p^s e^{i p x} \Big) \ket{0} \\ & = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} \hat b_{qr} \hat b_{ps}^\dagger \ket{0} v_{ps} e^{i p x} \\ & = \sum_s \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} (2 \pi)^3 \delta^3 (\mathbf p - \mathbf q) \delta_{rs} \ket{0} v_{ps} e^{i p x} \\ & = v_{qr} e^{i p x} ~.
+        \end{align*}
+        The polarisation factors need to to added in the LSZ formula.
+    \end{proof}
+
+\subsection{Photon external line}
+
+    External photon lines gets a factor of $\epsilon_\mu$ for an incoming photon and $\epsilon_\mu^*$ for an outgoing photon.
+
+    \begin{proof}
+        Recall that photon fields are expanded in creation and annihilation operators by
+        \begin{equation*}
+            \hat A^\mu (x) = \sum_\lambda \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}}  \Big (\hat a_p^\lambda \epsilon_\lambda^\mu (\mathbf p) e^{- i p x} + \hat a^{\lambda \dagger}_p \epsilon_\lambda^{*\mu} (\mathbf p) e^{i p x} \Big) ~.
+        \end{equation*}
+        For an initial particle, we have
+        \begin{align*}
+            & \bra{0} \hat A^\mu (x) \ket{q, \sigma} = \bra{0} \hat A^\mu (x) \sqrt{2 E_q} \hat a_{q \sigma}^\dagger \ket{0} \\ & = \sum_\lambda \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \bra{0} \Big (\hat a_{p\lambda} \epsilon_\lambda^\mu (\mathbf p) e^{- i p x} + \hat a^\dagger_{p\lambda} \epsilon_\lambda^{*\mu} (\mathbf p) e^{i p x} \Big) \sqrt{2 E_q} \hat a_{q \sigma}^\dagger \ket{0} \\ & = \sum_\lambda \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \bra{0} \hat a_{p\lambda} \hat a_{q \sigma}^\dagger \ket{0} \epsilon_{p \lambda}^\mu \sqrt{2 E_q} e^{- i p x} \\ & = \sum_\lambda \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \bra{0} (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) \delta_{\lambda\sigma} \ket{0} \sqrt{2 E_q} \epsilon_{p \lambda}^\mu e^{- i p x} = \epsilon_{q \sigma}^\mu e^{- i q x} ~.
+        \end{align*}
+        For a final particle, we have
+        \begin{align*}
+            & \bra{q, \sigma} \hat A^\mu (x) \ket{0} = \bra{0} \hat a_{q \sigma} \sqrt{2 E_q} \hat A^\mu (x)  \ket{0} \\ & = \sum_\lambda \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} \hat a_{q \sigma} \Big (\hat a_{p\lambda} \epsilon_\lambda^\mu (\mathbf p) e^{- i p x} + \hat a^\dagger_{p\lambda} \epsilon_\lambda^{*\mu} (\mathbf p) e^{i p x} \Big)  \ket{0} \\ & = \sum_\lambda \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} \hat a_{q \sigma} \hat a_{p\lambda}^\dagger  \ket{0} \epsilon_{p \lambda}^{*\mu}  e^{i p x} \\ & = \sum_\lambda \int \frac{d^3 p}{(2\pi)^3 \sqrt{2 E_p}} \sqrt{2 E_q} \bra{0} (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) \delta_{\lambda\sigma} \ket{0} \epsilon_{p \lambda}^{*\mu} e^{i p x}  = \epsilon_{q \sigma}^{*\mu} e^{i q x} ~.
+        \end{align*}
+        The polarisation factors need to to added in the LSZ formula.
+    \end{proof}
+
+\section{Summary}
+
+    In this section, we will summarise all the important formulae obtained so far.
+
+    The propagators are
+    \begin{enumerate}
+        \item scalar 
+            \begin{equation*}
+                D_F(x, y) = i \int \frac{d^4 p}{(2\pi)^4} \frac{e^{i p (x - y)}}{p^2 - m^2 + i \epsilon}  ~,
+            \end{equation*}
+        \item fermion
+            \begin{equation*}
+                D_F(x, y) = i \int \frac{d^4 p}{(2\pi)^4} \frac{e^{i p (x - y)}}{p^2 - m^2 + i \epsilon} (\slashed p + m)  ~,
+            \end{equation*}
+        \item photon (Feynman gauge $\xi = 1$ and Lorentz gauge $\xi = 0$)
+            \begin{equation*}
+                D_F(x, y) = - i \int \frac{d^4 p}{(2\pi)^4} \frac{e^{i p (x - y)}}{p^2 + i \epsilon} \Big (g_{\mu\nu} - (1-\xi) \frac{p_\mu p_\nu}{p^2} \Big)  ~,
+            \end{equation*}
+    \end{enumerate}
+
+    The Feynman's rules for scalar field are: \[ \mathcal L_{int} = - \frac{\lambda^3}{3!} \phi^3 - \frac{\lambda^4}{4!} \phi^4 \]
+    \begin{enumerate}
+        \item external line gets $1$, 
+        \item internal line gets the propagator,
+        \item vertex gets $i \lambda$.
+    \end{enumerate}
+
+    The Feynman's rules for scalar quantum electrodynamics are: \[ \mathcal L_{int} = - i e A_\mu (\phi^* \partial^\mu \phi - \phi \partial^\mu \phi^*) + e^2 A^\mu A_\mu \phi^* \phi\]
+    \begin{enumerate}
+        \item external line gets $1$ for scalar, $\epsilon_\mu$ for incoming photon and $\epsilon_\mu^*$ for outgoing photon,
+        \item internal line gets the propagator,
+        \item vertex gets $-ie$ times momentum of right-directed arrows minus momentum of left-directed arrows.
+    \end{enumerate}
+
+    The Feynman's rules for Yukawa theory are: \[ \mathcal  L_{int} = - g \overline \psi \phi \psi\]
+    \begin{enumerate}
+        \item external line gets $1$ for scalar, $u^s$ for incoming fermion, $\overline u^s$ for outgoing fermion, $\overline v^s$ for incoming antifermion and $v^s$ for outgoing antifermion,
+        \item internal line gets the propagator,
+        \item vertex gets $-ig$.
+    \end{enumerate}
+
+    The Feynman's rules for quantum electrodynamics are: \[ \mathcal L_{int} = - e \overline \psi \gamma^\mu \psi A_\mu \]
+    \begin{enumerate} 
+        \item external line gets $\epsilon_\mu$ for incoming photon, $\epsilon_\mu^*$ for outgoing photon, $u^s$ for incoming fermion, $\overline u^s$ for outgoing fermion, $\overline v^s$ for incoming antifermion and $v^s$ for outgoing antifermion,
+        \item internal line gets the propagator,
+        \item vertex gets $-ie\gamma^\mu$.
+    \end{enumerate}
+
+\appendix 
+
+\section{Useful identities} 
+
+    We need to prove the identity
+    \begin{equation}\label{feyn}
+        e^{i E_p (y_0 - x_0) } \theta(x_0 - y_0) + e^{i E_p (x_0 - y_0) } \theta(y_0 - x_0) = - \frac{2 E_p}{2 \pi i} \int d p_0 \frac{e^{i p_0 (x_0 - y_0)}}{p_0^2 - E_p^2 + i \epsilon} 
+    \end{equation}
+
+    \begin{proof}
+        First, we decompose the product
+        \begin{equation*}
+            \frac{1}{p_0^2 - E_p^2 + i \epsilon} = \frac{1}{(p_0 - (E_p - i \epsilon))(p_0 - (-E_p + i \epsilon))} ~,
+        \end{equation*}
+        in order to obtain 
+        \begin{equation*}
+            \int d p_0 \frac{e^{i p_0 (x_0 - y_0)}}{p_0^2 - E_p^2 + i \epsilon} = \int d p_0 \frac{e^{i p_0 (x_0 - y_0)}}{(p_0 - (E_p - i \epsilon))(p_0 - (-E_p + i \epsilon))} ~.
+        \end{equation*}
+        For $x^0 < y^0$, we integrate over the countour
+        \begin{figure}[ht!]
+            \centering
+            \begin{tikzpicture}
+                \draw [->] (0,-2.5) -- (0,0.5); 
+                \draw [->] (-3,0) -- (3,0);   
+                \node at (1, -0.8) {$E_p - i \epsilon$}; 
+                \draw (1, -0.65) node[anchor=south] {\tiny \textbullet};
+                \draw[->] (1, 0) -- (1, -0.43);
+
+                \draw[<-, thick, xshift=2pt]
+                (2, 0) -- (-2,0);
+                \draw[->, thick, xshift=2pt]
+                (2, 0) arc (0:-180:2) -- (-2, 0);
+            \end{tikzpicture}
+        \end{figure}
+        \newline whereas for $x^0 > y^0$, we integrate over the countour
+        \begin{figure}[ht!]
+            \centering
+            \begin{tikzpicture}
+                \draw [->] (0,-0.5) -- (0,2.5); 
+                \draw [->] (-3,0) -- (3,0);   
+                \node at (-1, 0.8) {$-E_p + i \epsilon$}; 
+                \draw (-1, 0.65) node[anchor=north] {\tiny \textbullet};
+                \draw[->] (-1, 0) -- (-1, 0.43);
+
+                \draw[<-, thick, xshift=2pt]
+                (2, 0) -- (-2,0);
+                \draw[<-, thick, xshift=2pt]
+                (-2, 0) arc (180:0:2) -- (2, 0);
+            \end{tikzpicture}
+        \end{figure}
+        \newline Therefore, we obtain
+        \begin{align*}
+            & \int d p_0 \frac{e^{i p_0 (x_0 - y_0)}}{p_0^2 - E_p^2 + i \epsilon} \\ & = 2 \pi i \Big ( - \frac{e^{i p_0 (x_0 - y_0)}}{2 p_0} \Big \vert_{p_0 = E_p} \theta (y_0 - x_0) + \frac{e^{i p_0 (x_0 - y_0)}}{2 p_0} \Big \vert_{p_0 = - E_p} \theta (x_0 - y_0)\Big) \\ & = - \frac{2 \pi i}{2 E_p} \Big ( e^{i E_p (x_0 - y_0)} \theta(y_0 - x_0) + e^{- i E_p (x_0 - y_0)} \theta(x_0 - y_0) \Big ) ~.
+        \end{align*}
+
+    \end{proof}
+    
+\phantomsection
+\nocite{qftlecture} 
+\nocite{schwartz}  
+\printbibliography 
+
+\immediate\write18{mv \jobname.pdf ../../../pdf/\jobname.pdf}
+
+\end{document} 
+
+ 

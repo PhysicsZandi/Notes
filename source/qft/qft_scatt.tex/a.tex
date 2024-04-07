@@ -1,0 +1,248 @@
+\documentclass[a4paper]{article} 
+
+\def\ncourse {Quantum Field Theory}
+\def\ntopic {3 - scattering processes}
+ 
+\input{../../packages}  
+   
+\begin{document}  
+ 
+\maketitle
+
+\begin{abstract}
+    In this note, we will study all the important scattering processes for $\phi^3$, sQED, Yukawa and QED.
+\end{abstract}
+
+\tableofcontents
+\newpage 
+
+\section{Scalar}
+
+\subsection{2 to 2}
+
+    Consider for $\phi^3$ theory the scattering \[\phi \phi \rightarrow \phi \phi\] at tree level. There are three possible Feynman's diagram:
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{scal_1} 
+            \begin{fmfgraph*}(100, 100)  
+                \fmfleft{i1,i2}
+                \fmfright{o1,o2}
+                \fmf{scalar,label=$p_1$}{i1,w1} 
+                \fmf{scalar,label=$p_2$}{i2,w1} 
+                \fmf{scalar,label=$p_1 + p_2$}{w1,w2} 
+                \fmf{scalar,label=$p_3$}{w2,o1}
+                \fmf{scalar,label=$p_4$}{w2,o2}
+            \end{fmfgraph*}
+        \end{fmffile} 
+    \end{figure}  
+    \newline which gives 
+    \begin{equation*}
+        i \mathcal M = (- i \lambda) \frac{i}{(p_1 + p_2)^2 - m^2} (- i \lambda) = - \frac{i \lambda^2 }{s - m^2} ~.
+    \end{equation*}
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{scal_2} 
+            \begin{fmfgraph*}(100, 100)  
+                \fmfleft{i1,i2}
+                \fmfright{o1,o2}
+                \fmf{scalar,label=$p_2$}{i1,w1} 
+                \fmf{scalar,label=$p_1$}{i2,w2} 
+                \fmf{scalar,label=$p_1 - p_3$}{w2,w1}  
+                \fmf{scalar,label=$p_4$}{w1,o1}
+                \fmf{scalar,label=$p_3$}{w2,o2} 
+            \end{fmfgraph*} 
+        \end{fmffile} 
+    \end{figure} 
+    \newline which gives 
+    \begin{equation*}
+        i \mathcal M = (- i \lambda) \frac{i}{(p_1 - p_3)^2 - m^2} (- i \lambda) = - \frac{i \lambda^2 }{t - m^2} ~.
+    \end{equation*}
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{scal_3} 
+            \begin{fmfgraph*}(100, 100)  
+                \fmfleft{i1,i2}
+                \fmfright{o1,o2}
+                \fmf{scalar, label=$p_2$}{i1,v1}  
+                \fmf{phantom}{v1,o1}
+                \fmf{scalar, label=$p_1$}{i2,v2} 
+                \fmf{phantom}{v2,o2}
+                \fmf{scalar, label=$p_1 - p_4$}{v1,v2} 
+                \fmf{scalar,tension=0,label=$p_3$}{v1,o2}
+                \fmf{scalar,tension=0,label=$p_4$}{v2,o1} 
+            \end{fmfgraph*} 
+        \end{fmffile} 
+    \end{figure} 
+    \newline which gives 
+    \begin{equation*}
+        i \mathcal M = (- i \lambda) \frac{i}{(p_1 - p_4)^2 - m^2 + i \epsilon} (- i \lambda) = - \frac{i \lambda^2}{u - m^2} ~.
+    \end{equation*}
+    Putting everything together, we find
+    \begin{equation*}
+        i \mathcal M = - i \lambda^2 \Big ( \frac{1}{s - m^2} + \frac{1}{t - m^2} + \frac{1}{u- m^2} \Big) ~,
+    \end{equation*}
+    hence
+    \begin{equation*}
+        |\mathcal M|^2 = \lambda^4 \Big ( \frac{1}{s - m^2} + \frac{1}{t - m^2} + \frac{1}{u - m^2} \Big)^2 ~.
+    \end{equation*}
+    For example, the differential cross section in the center of mass is
+    \begin{equation*}
+        \dv{\sigma}{\Omega} = \frac{\lambda^4}{64 \pi^2 s} \Big ( \frac{1}{s - m^2} + \frac{1}{t - m^2} + \frac{1}{u - m^2} \Big)^2 ~. 
+    \end{equation*}
+
+\section{sQED} 
+
+\subsection{Moller scattering}
+
+    Consider for sQED theory the scattering \[\phi \phi \rightarrow \phi \phi\] at tree level. There are two possible Feynman's diagram:
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{sqed_1} 
+            \begin{fmfgraph*}(100, 100)  
+                \fmfleft{i1,i2}
+                \fmfright{o1,o2}
+                \fmf{scalar,label=$p_2$}{i1,w1} 
+                \fmf{scalar,label=$p_1$}{i2,w2} 
+                \fmf{photon,label=$p_1 - p_3$}{w2,w1}   
+                \fmf{scalar,label=$p_4$}{w1,o1}
+                \fmf{scalar,label=$p_3$}{w2,o2} 
+            \end{fmfgraph*} 
+        \end{fmffile} 
+    \end{figure} 
+    \newline which gives, using Mandelstam's variables properties in \eqref{mand},
+    \begin{align*}
+        i \mathcal M & = (- i e) (p_1^\mu + p_3^\mu) \frac{-i g_{\mu\nu}}{(p_1 - p_3)^2} (- i e) (p_2^\nu + p_4^\nu) = - \frac{i e^2}{t} (p_1+ p_3) (p_2 + p_4) \\ & = - \frac{i e^2}{t} ( p_1 p_2+ p_1 p_4 + p_3 p_2 + p_3 p_4 ) \\ & = - \frac{i e^2}{t} \Big ( \frac{s - m^2_1 - m_2^2}{2} - \frac{u - m_1^2 - m_4^2}{2} - \frac{u - m_2^2 - m_3^2}{2} + \frac{s - m_3^2 - m_4^2}{2} \Big ) \\ & = - \frac{i e^2}{t} \Big ( \frac{s}{2} - \frac{u}{2} - \frac{u}{2} + \frac{s}{2} \Big ) = - \frac{i e^2}{2t} (s - u) ~.
+    \end{align*}
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{sqed_2} 
+            \begin{fmfgraph*}(100, 100)  
+                \fmfleft{i1,i2}
+                \fmfright{o1,o2}
+                \fmf{scalar, label=$p_2$}{i1,v1}  
+                \fmf{phantom}{v1,o1}
+                \fmf{scalar, label=$p_1$}{i2,v2} 
+                \fmf{phantom}{v2,o2}
+                \fmf{photon, label=$p_1 - p_4$}{v1,v2}  
+                \fmf{scalar,tension=0,label=$p_3$}{v1,o2}
+                \fmf{scalar,tension=0,label=$p_4$}{v2,o1} 
+            \end{fmfgraph*} 
+        \end{fmffile} 
+    \end{figure} 
+    \newline which gives, using Mandelstam's variables properties in \eqref{mand},
+    \begin{align*}
+        i \mathcal M & = (- i e) (p_1^\mu + p_4^\mu) \frac{-i g_{\mu\nu}}{(p_1 - p_4)^2} (- i e) (p_2^\nu + p_3^\nu) = - \frac{i e^2}{u} (p_1+ p_4) (p_2 + p_3) \\ & = - \frac{i e^2}{u} ( p_1 p_2 + p_1 p_3 + p_4 p_2 + p_4 p_3 ) \\ & = - \frac{i e^2}{u} \Big ( \frac{s - m^2_1 - m_2^2}{2} - \frac{t - m_1^2 - m_3^2}{2} - \frac{t - m_2^2 - m_4^2}{2} + \frac{s - m_3^2 - m_4^2}{2} \Big ) \\ & = - \frac{i e^2}{u} \Big ( \frac{s}{2} - \frac{t}{2} - \frac{t}{2} + \frac{s}{2} \Big ) = - \frac{i e^2}{2u} (s - t) ~.
+    \end{align*}
+    Putting everything together, we find
+    \begin{equation*}
+        i \mathcal M = - \frac{i e^2}{2} \Big ( \frac{s - u}{t} + \frac{s- t}{u} \Big ) ~,
+    \end{equation*}
+    hence
+    \begin{equation*}
+        |\mathcal M|^2 = \frac{e^4}{4} \Big ( \frac{s - u}{t} + \frac{s- t}{u} \Big )^2 ~.
+    \end{equation*}
+    For example, the differential cross section in the center of mass is
+    \begin{equation*}
+        \dv{\sigma}{\Omega} = \frac{e^4}{256 \pi^2} \Big ( \frac{s - u}{t} + \frac{s- t}{u} \Big )^2 ~. 
+    \end{equation*}
+
+\subsection{Compton scattering}
+
+    Consider for sQED theory the scattering \[\gamma \phi \rightarrow \gamma \phi\] at tree level. There are three possible Feynman's diagram:
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{sqed_3} 
+            \begin{fmfgraph*}(100, 100)  
+                \fmfleft{i1,i2}
+                \fmfright{o1,o2}
+                \fmf{photon,label=$p_2$}{i1,w1} 
+                \fmf{scalar,label=$p_1$}{i2,w1} 
+                \fmf{scalar,label=$k$}{w1,w2} 
+                \fmf{photon,label=$p_4$}{w2,o1}
+                \fmf{scalar,label=$p_3$}{w2,o2}  
+            \end{fmfgraph*} 
+        \end{fmffile} 
+    \end{figure} 
+    \newline which gives
+    \begin{align*}
+        i \mathcal M & = (-i e) \epsilon_{2 \mu} (p_1^\mu + p_1^\mu + p_2^\mu) \frac{i}{s - m^2} (-i e) (p_3^\nu + p_3^\nu + p_4^\nu) \epsilon_{4 \nu}^* \\ & = - \frac{ i e^2}{s - m^2} \epsilon_{2 \mu} (2 p_1^\mu + p_2^\mu) (2 p_3^\nu + p_4^\nu) \epsilon_{4 \nu}^* ~.
+    \end{align*}
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{sqed_4} 
+            \begin{fmfgraph*}(100, 100)
+                \fmfleft{i1,i2}
+                \fmfright{o1,o2} 
+                \fmf{photon,label=$p_2$}{i1,w1} 
+                \fmf{scalar,label=$p_1$}{i2,w2}
+                \fmf{scalar}{w2,w1}  
+                \fmf{scalar,label=$p_4$}{w1,o1} 
+                \fmf{photon,label=$p_3$}{w2,o2}   
+            \end{fmfgraph*} 
+        \end{fmffile} 
+    \end{figure} 
+    \newline which gives
+    \begin{align*}
+        i \mathcal M & = (- i e) \epsilon_{2 \mu} (p_1^\mu + p_1^\mu - p_3^\mu) \frac{i}{t - m^2} (-i e) (p_4^\mu + p_4^\mu - p_2^\mu) \epsilon_{4 \nu}^* \\ & = - \frac{ie^2}{t - m^2} \epsilon_{2\mu} (2 p_1^\mu - p_3^\mu) (2 p_4^\mu - p_2^\mu) \epsilon_{4\mu}^* ~.
+    \end{align*}
+    \begin{figure}[ht!]
+        \centering
+        \begin{fmffile}{sqed_5} 
+            \begin{fmfgraph*}(100, 100)  
+                \fmfleft{i1,i2}
+                \fmfright{o1,o2}
+                \fmf{photon,label=$p_2$}{i1,v1}  
+                \fmf{scalar,label=$p_1$}{i2,v1}
+                \fmf{scalar,label=$p_3$}{v1,o2}
+                \fmf{photon,label=$p_4$}{v1,o1}
+            \end{fmfgraph*} 
+        \end{fmffile} 
+    \end{figure} 
+    \newline which gives
+    \begin{align*}
+        i \mathcal M & = \epsilon_{2 \mu} 2 i e^2 g_{\mu\nu} \epsilon_{4 nu}^* ~.
+    \end{align*}
+    Putting everything together, we find
+    \begin{align*} 
+        i \mathcal M & = - \frac{ i e^2}{s - m^2} \epsilon_{2 \mu} (2 p_1^\mu + p_2^\mu) (2 p_3^\nu + p_4^\nu) \epsilon_{4 \nu}^* \\ & \quad - \frac{ie^2}{t - m^2} \epsilon_{2\mu} (2 p_1^\mu - p_3^\mu) (2 p_4^\mu - p_2^\mu) \epsilon_{4\mu}^* + \epsilon_{2 \mu} 2 i e^2 g^{\mu\nu} \epsilon_{4 nu}^* ~.
+    \end{align*}
+    Now, recall that by Lorentz gauge $\epsilon^{\mu i} p_{\mu i}$ for $i = 1,2,3,4$. Furthermore, 
+    hence
+    \begin{equation*}
+        |\mathcal M|^2 = \frac{e^4}{4} \Big ( \frac{s - u}{t} + \frac{s- t}{u} \Big )^2 ~.
+    \end{equation*}
+    For example, the differential cross section in the center of mass is
+    \begin{equation*}
+        \dv{\sigma}{\Omega} = \frac{e^4}{256 \pi^2} \Big ( \frac{s - u}{t} + \frac{s- t}{u} \Big )^2 ~. 
+    \end{equation*}
+
+
+\section{Yukawa}
+
+\section{QED}
+
+
+
+\appendix 
+
+\section{Useful identities}
+
+    \begin{equation}\label{mand}
+    \begin{aligned}
+        & p_1 p_2 = \frac{s - m_1^2 - m_2^2}{2} = p_3 p_4 = \frac{s - m_3^2 - m_4^2}{2} ~, \\ & p_1 p_3 = - \frac{t - m_1^2 - m_3^2}{2} = p_2 p_4 = - \frac{t - m_2^2 - m_4^2}{2} ~, \\ &  p_1 p_4 = - \frac{u - m_1^2 - m_4^2}{2} = p_2 p_3 = - \frac{u - m_2^2 - m_3^2}{2} ~.
+    \end{aligned} 
+    \end{equation}
+
+\section*{Back}
+
+
+
+\nocite{qftlecture} 
+\nocite{schwartz}  
+\printbibliography
+
+\immediate\write18{mv \jobname.pdf ../../../pdf/\jobname.pdf}
+
+\end{document} 
+
+ 

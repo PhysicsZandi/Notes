@@ -25,14 +25,14 @@
 \usepackage{xcolor} \xdefinecolor{mycolor}{RGB}{0,175,179} 
 \usepackage{hyperref} \hypersetup{colorlinks, linkcolor={mycolor}, citecolor={mycolor}, urlcolor={mycolor}}
 \usepackage{titlesec}
-\titleformat{\section}{\newpage\normalfont\Large\bfseries\color{mycolor}\centering}{\thesection}{1em}{}
+\titleformat{\section}{\normalfont\Large\bfseries\color{mycolor}\centering}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\large\bfseries\color{mycolor}\centering}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\normalfont\bfseries\color{mycolor}\centering}{\thesubsubsection}{1em}{}
 
 %Commands
 
 \usepackage[backend=bibtex, sorting=none]{biblatex}
-\addbibresource{../bibliography.bib}
+\addbibresource{../../bibliography.bib}
 
 
 \usepackage{amsmath}
@@ -46,6 +46,7 @@
 \usepackage{cancel}
 \usepackage{slashed}
 \usepackage{feynmp-auto}
+\usepackage{tikz}
 
 
 \newtheorem{principle}{Principle}[section]
@@ -112,3 +113,12 @@
 \newcommand{\ket}[1]{\vert#1\rangle}
 \newcommand{\bra}[1]{\langle#1\vert}
 \newcommand{\braket}[2]{\langle#1\vert#2\rangle}
+
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\str}{str}
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imm}{Im}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\spann}{span}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\erf}{erf}

@@ -1,0 +1,225 @@
+\documentclass[a4paper]{article} 
+
+\def\ncourse {Quantum Field Theory}
+\def\ntopic {1 - mathematical formalism of the S-matrix}
+ 
+\input{../../packages}  
+   
+\begin{document}  
+ 
+\maketitle
+
+\begin{abstract}
+    In this note, we will study the mathematical devolopment to compute the S-matrix.  
+\end{abstract}
+
+\tableofcontents
+
+\section{S-matrix}
+ 
+    In this section, we will define the S-matrix and we will relate its elements to physical quantities, like cross sections and decay rates.
+
+\subsection{Transition amplitudes}
+
+    In quantum mechanics, experimentally measureable quantities are related to transition ampllitudes.
+    \begin{definition}[Transition amplitude]
+        Let $\ket{a}$ be a generic initial state and $\ket{b}$ a generic final state. Then, in the most generic case in which states are not normalised, the probability of the transition between the initial and the final state is given by 
+        \begin{equation*}
+            \mathcal P (a \rightarrow b) = \frac{|\braket{b}{a}|^2}{|\braket{b}{b}|^2 |\braket{a}{a}|^2} ~.
+        \end{equation*}
+    \end{definition}
+
+    In Schroedinger picture, states depend on time while operators do not. 
+    \begin{definition}[Transition amplitude in Schroedinger picture]
+        Let $\ket{i, t_i}$ be a initial state at time $t_i$, $\ket{f, t_f}$ be a final state at time $t_f$. Then the probability of the transition between the initial and the final state is 
+        \begin{equation*}
+            \mathcal P (i, t_i \rightarrow f, t_f) = \frac{|\braket{f, t_f}{i, t_i}|^2}{|\braket{f, t_f}{f, t_f}|^2 |\braket{i, t_i}{i, t_i}|^2} ~.
+        \end{equation*}
+    \end{definition}
+
+    In Heisenberg picture, states are time-independent while operators do not. Braket products in different pictures are related by 
+    \begin{equation*}
+        \braket{f, t_f}{i, t_i}_S = \bra{f} \hat S \ket{i}_H ~,
+    \end{equation*}
+    where $S$ is an operator that carries information about time evolution, called the S-matrix.
+    \begin{definition}[Transition amplitude in Heisenberg picture]
+        Let $\ket{i}$ be a initial state, $\ket{f}$ a final state, $\hat S$ the time evolution operator. Then the probability of the transition between the initial and the final state is 
+        \begin{equation*}
+            \mathcal P (i \rightarrow f) = \frac{|\bra{f} \hat S \ket{i}|^2}{|\braket{f}{f}|^2 |\braket{i}{i}|^2} ~.
+        \end{equation*}
+    \end{definition}
+
+\subsection{Cross section}
+
+    \begin{definition}[Cross section]
+        Consider a scattering experiment. Let $N_{in}$ and $N_{out}$ be respectively the number of incoming and outgoing particles, $T$ the time of the experiment, $\Phi = N_{in} |\mathbf v| / V$ the flux of the incoming beam, where $V$ is the volume and $\mathbf v$ the velocity of the beam. Then the classical cross section is defined by 
+        \begin{equation*}
+            \sigma = \frac{N_{out}}{T \Phi} = \frac{V}{|\mathbf v| T} \frac{N_{out}}{N_{in}} ~.
+        \end{equation*}
+        Introducing the probability $\mathcal P = N_{out} / N_{in}$, its quantum mechanical counterpart is
+        \begin{equation*}
+            \sigma = \frac{V}{|\mathbf v| T} \mathcal P = \frac{N_{in}}{T \Phi} \mathcal P = \frac{1}{T \Phi} \mathcal P ~,
+        \end{equation*}
+        where we have redefined $\Phi = \Phi / N_{in}$ as the normalised one-particle flux. The differential cross section is 
+        \begin{equation*}
+            d \sigma = \frac{V}{|\mathbf v| T} d \mathcal P ~,
+        \end{equation*}
+        differential with respect to solid angle $d\Omega$ or energy $dE$. It has the dimension of an area, i.e. $[\sigma] = [L]^2$. 
+    \end{definition}
+
+\subsection{2 to n process}
+
+    Consider a scattering experiment in which two incoming particle interact to produce $n$ outgoing particles
+    \begin{equation*}
+        p_1 + p_2 \rightarrow \{p_j\}_{j = 1}^n ~.
+    \end{equation*}
+    In perturbative theory, the S-matrix can be decomposed into 
+    \begin{equation*}
+        \hat S = \hat 1 + i \hat T ~,
+    \end{equation*}
+    where the identity $\hat 1$ represents no interactions, i.e. when $\ket{i} = \ket{f}$, and $\hat T$ describes deviations from it. Furthermore, since $4$-momentum is conserved, we can extract a delta from $\hat T$ to obtain
+    \begin{equation*}
+        i\hat T = (2\pi)^4 \delta^4 (p_1 + p_2 - {\textstyle \sum_j} p_j) i \hat{\mathcal M} ~,
+    \end{equation*}
+    where $\hat{\mathcal M}$ is the scattering amplitude.
+
+    \begin{theorem}[Relation between cross section and S-matrix]
+        In the approximation that interaction happens at finite time, the differential cross section of a $2 \rightarrow n$ process is 
+        \begin{align*}
+            d \sigma & = \frac{|\mathcal M|^2}{4 E_1 E_2 |\mathbf v_2 - \mathbf v_1|}  d\Pi_n \\ & = \frac{|\mathcal M|^2}{4 E_1 E_2 |\mathbf v_2 - \mathbf v_1|} \prod_j \frac{d^3 p_j}{(2\pi)^3 2 E_j} (2\pi)^4 \delta^4 (p_1 + p_2 - {\textstyle \sum_j} p_j)~.
+        \end{align*}
+    \end{theorem}
+    \begin{proof}
+        
+    \end{proof}
+
+\subsection{2 to 2 scattering}
+
+    Consider the particular case in which there are two outgoing particles
+    \begin{equation*}
+        p_1 + p_2 \rightarrow p_3 + p_4 ~.
+    \end{equation*}
+    In the center of mass frame, the differential cross section is 
+    \begin{equation*}
+        d \sigma = \frac{1}{64 \pi^2 E_{cm}}^2 \frac{|\mathbf p_f|}{|\mathbf p_i|} |\mathcal M|^2 d\Omega ~,
+    \end{equation*}
+    where $|\mathbf p_i| = |\mathbf p_1| = |\mathbf p_2|$ and $|\mathbf p_f| = |\mathbf p_3| = |\mathbf p_4|$.
+    \begin{proof}
+        
+    \end{proof}
+
+    In the rest frame of particle $1$, the differential cross section is 
+    \begin{equation*}
+        d \sigma = \frac{1}{64 \pi^2 E_{cm}} \Big [ E_4 + E_3 \Big ( 1 - \frac{|\mathbf p_f|}{|\mathbf p_i|} \cos \theta \Big ) \Big ]^{-1} \frac{|\mathbf p_f|}{|\mathbf p_i|} |\mathcal M|^2 d\Omega ~.
+    \end{equation*}
+    \begin{proof}
+        
+    \end{proof}
+
+\subsection{Decay rates}
+
+    \begin{definition}[Decay rate]
+        Consider a decay experiment. Let $\mathcal P$ be the probablity that a particle decays with mean lifetime $\tau$ and $T$ the time of the experiment. Then the decay rate is defined by 
+        \begin{equation*}
+            \Gamma = \frac{1}{\tau} = \frac{\mathcal P}{T} ~.
+        \end{equation*}
+        The differential decay rate is 
+        \begin{equation*}
+            d \Gamma = \frac{1}{T} d \mathcal P~,
+        \end{equation*}
+        differential with respect to solid angle $d\Omega$ or energy $dE$. It has the dimension of an inverse time, i.e. $[\Gamma] = [T]^{-1}$. 
+    \end{definition}
+
+\subsection{1 to n process}
+
+    Consider a decay experiment in which a particle decays to produce $n$ outgoing particles
+    \begin{equation*}
+        p_1 \rightarrow \{p_j\}_{j = 1}^n ~.
+    \end{equation*}
+
+    \begin{theorem}[Relation between decay rate and S-matrix]
+        In the approximation that interaction happens at finite time, the differential decay rate of a $1 \rightarrow n$ process is 
+        \begin{equation*}
+            d \Gamma = \frac{|\mathcal M|^2}{2 E_1}  d\Pi_n = \frac{|\mathcal M|^2}{2 E_1}  \prod_j \frac{d^3 p_j}{(2\pi)^3 2 E_j} (2\pi)^4 \delta^4 (p_1 - {\textstyle \sum_j} p_j)~.
+        \end{equation*}
+    \end{theorem}
+    \begin{proof}
+        
+    \end{proof}
+
+\section*{Propagators}
+
+    In this section, we will relate S-matrix elements to time-ordered product of fields applied to interacting vacuum states.
+
+\subsection{LSZ reduction formula} 
+
+    \begin{theorem}[LSZ reduction formula]
+        In the approximation that interaction happens at finite time, so that initial and final states are (asymptotic) free theory states, the S-matrix is given by
+        \begin{align*}
+            \bra{f} \hat S \ket{i} & = i \int dx_1 \exp(- i p_1 x_1) (\Box + m^2) \ldots i \int dx_1 \exp(i p_n x_n) (\Box + m^2) \\ & \quad \times \bra{\Omega} T \{ \phi(x_1) \ldots \phi(x_n)\} \ket{\Omega} ~,
+        \end{align*}
+        where $\ket{\Omega} \neq \ket{0}$ is the interacting vacuum, $-i$ in the exponent for initial states, $+i$ in the exponent for final states and $T$ is the time ordering operator which sorts all the operators in order to have time increasing from right to left. 
+    \end{theorem}
+
+    \begin{proof}
+        
+    \end{proof}
+
+
+\subsection{Interaction picture}
+
+    In Heisenberg picture, the dynamics is governed by the Hamiltonian $\hat H$. Fields evolve in time with the Heisenberg equation of motion 
+    \begin{equation*}
+        i \partial_t \hat \phi(t, \mathbf x) = [\hat \phi (t, \mathbf x), \hat H (t)] ~.
+    \end{equation*}
+    Its solution is 
+    \begin{equation*}
+        \hat \phi(t, \mathbf x) = \hat S^\dagger (t, t_0) \hat \phi(\mathbf x) \hat S(t, t_0) ~,
+    \end{equation*}
+    where $\hat S(t, t_0)$ is the time evolution operator that satisfies the Schroedinger equation 
+    \begin{equation*}
+        i \partial_t \hat S(t, t_0) = \hat H(t) \hat S(t, t_0) ~.
+    \end{equation*}
+
+    \begin{proof}
+
+    \end{proof}
+
+    Now, suppose that the Hamiltonian can be perturbatively decomposed into two pieces
+    \begin{equation*}
+        \hat H(t) = \hat H_0 + \hat  V(t) ~,
+    \end{equation*}
+    where $\hat H_0$ is exactly solved and $\hat V(t)$ is small. In interaction picture, operators evolve with $\hat H_0$, so that 
+    \begin{equation*}
+        \hat \phi_0(t, \mathbf x) = e^{i \hat H_0 (t - t_0)} \hat \phi(\mathbf x) e^{-i \hat H_0 (t - t_0)}
+    \end{equation*}
+    where $t_0$ is a time in which Schroedinger and Heisenberg picture field coincide. Therefore 
+    \begin{equation*}
+        \phi(t, \mathbf x)
+    \end{equation*}
+
+\subsection{Vacuum matrix elements}
+
+    \begin{theorem}[Relation between interacting and free vacuum matrix elements]
+        \begin{align*}
+            \bra{\Omega} T \{\phi(x_1) \ldots \phi(x_n)\} \ket{\Omega} & = \frac{\bra{0} T \{\phi_0(x_1) \ldots \phi_0(x_n) \exp(- i \int_{-\infty}^\infty dt ~ V_I(t) )\} \ket{0}}{\bra{0} T \{\exp(- i \int_{-\infty}^\infty dt ~ V_I(t) ) \} \ket{0}} \\ & = \frac{\bra{0} T \{\phi_0(x_1) \ldots \phi_0(x_n) \exp(i \int d^4 x ~ \mathcal L_{int} [\phi_0] )\} \ket{0}}{\bra{0} T \{\exp(i \int d^4 x ~ \mathcal L_{int} [\phi_0] ) \} \ket{0}} ~.
+        \end{align*}
+    \end{theorem}
+
+    \begin{proof}
+        
+    \end{proof}
+
+\section{Wick's theorem}
+
+\section*{Back}
+
+\nocite{qftlecture} 
+\nocite{schwartz}  
+\printbibliography
+
+\immediate\write18{mv \jobname.pdf ../../../pdf/\jobname.pdf}
+
+\end{document} 
+
+ 
